@@ -1,5 +1,7 @@
-import * as THREE from '../libs/three.js/three.module.min.js';
-import { OBJLoader } from '../libs/three.js/OBJLoader.js';
+import * as THREE from '../libs/three.module.min.js';
+import { OBJLoader } from '../libs/OBJLoader.js';
+
+console.log("Script is running...");
 
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
@@ -26,6 +28,7 @@ window.addEventListener('resize', () => {
 
 // Load a 3D model using OBJLoader
 const loader = new OBJLoader();
+console.log("Attempting to load model...");
 loader.load(
     '/static/models/bb8.obj',
     function (object) {
