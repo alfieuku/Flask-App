@@ -1,5 +1,5 @@
-import * as THREE from '../libs/three.module.min.js';
-import { OBJLoader } from '../libs/OBJLoader.js';
+import * as THREE from '/static/libs/three.module.min.js';
+import { OBJLoader } from '/static/libs/OBJLoader.js';
 
 console.log("Script is running...");
 
