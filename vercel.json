@@ -4,7 +4,7 @@
         {"src": "app.py", "use": "@vercel/python"}
     ],
     "routes": [
-        {"src": "/static/(.*)", "dest": "/static/$1"},  // Serve static files
-        {"src": "/(.*)", "dest": "app.py"}             // Route all other requests to Flask app
+        {"src": "/static/(.*)", "dest": "/static/$1"},  
+        {"src": "/(.*)", "dest": "app.py"}             
     ]
 }
