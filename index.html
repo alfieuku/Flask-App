@@ -3,33 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Model Viewer</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>3D Models Viewer</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
 </head>
 <body>
-    <h1>3D Model Viewer</h1>
-    <div id="3d-container" style="width: 100%; height: 100vh;"></div>
+    <!-- 3D container -->
+    <div id="webgl-container"></div>
+
+    <!-- Include Three.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/loaders/OBJLoader.js"></script>
 
     <script>
+        // Set up the scene, camera, and renderer
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('3d-container').appendChild(renderer.domElement);
+        document.body.appendChild(renderer.domElement);
 
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-        const cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+        // Add lighting
+        const light = new THREE.AmbientLight(0x404040); // Ambient light
+        scene.add(light);
 
+        // Create an Object Loader for OBJ models
+        const loader = new THREE.OBJLoader();
+
+        // Load the first model (bb8.obj)
+        loader.load('static/bb8.obj', function (object) {
+            scene.add(object);
+        });
+
+        // Load another model if you have another .obj file
+        loader.load('static/r2d2.obj', function (object) {
+            object.position.x = 2; // Offset position to not overlap with the first model
+            scene.add(object);
+        });
+
+        // Camera position
         camera.position.z = 5;
 
+        // Animate and render the scene
         function animate() {
             requestAnimationFrame(animate);
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.01;
             renderer.render(scene, camera);
         }
+
         animate();
     </script>
 </body>
