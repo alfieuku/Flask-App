@@ -1,11 +1,10 @@
-
 {
     "version": 2,
     "builds": [
         {"src": "app.py", "use": "@vercel/python"}
     ],
     "routes": [
-        {"src": "/(.*)", "dest": "app.py"}
+        {"src": "/static/(.*)", "dest": "/static/$1"},  // Serve static files
+        {"src": "/(.*)", "dest": "app.py"}             // Route all other requests to Flask app
     ]
-
 }
