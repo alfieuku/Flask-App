@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 @app.route('/')
 def index():
@@ -8,6 +8,6 @@ def index():
 
 
 if __name__ == '__main__':
-    print ("Running.")
     app.run(debug=True)
+
 
