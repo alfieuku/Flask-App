@@ -5,17 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Homepage</title>
   <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      margin: 0;
-      padding: 0;
       /* Set the background image */
       background-image: url("{{ url_for('static', filename='images/ds5a9072.jpg') }}");
-      background-size: cover; /* Ensures the image covers the entire screen */
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
+
     .btn {
       display: inline-block;
       margin: 10px;
@@ -29,6 +38,7 @@
       cursor: pointer;
       transition: background-color 0.3s ease;
     }
+
     .btn:hover {
       background-color: #0056b3;
     }
