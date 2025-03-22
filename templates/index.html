@@ -1,58 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Viewer</title>
-    <style>
-        body { margin: 0; }
-        canvas { display: block; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      /* Set the background image */
+      background-image: url('background.jpg'); /* Replace with your image path */
+      background-size: cover; /* Ensures the image covers the entire screen */
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .btn {
+      display: inline-block;
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
-    <script type="module">
-        import * as THREE from '/static/libs/three.module.min.js';
-        import { OBJLoader } from '/static/libs/OBJLoader.js';
-
-        // Set up the scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // Add lights
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambientLight);
-        const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-        directionalLight.position.set(5, 5, 5);
-        scene.add(directionalLight);
-
-        // Load the 3D model
-        const loader = new OBJLoader();
-        loader.load(
-            '/static/models/bb8.obj',
-            function (object) {
-                object.scale.set(0.1, 0.1, 0.1);
-                scene.add(object);
-            },
-            function (xhr) {
-                console.log((xhr.loaded / xhr.total) * 100 + '% loaded');
-            },
-            function (error) {
-                console.error('An error occurred:', error);
-            }
-        );
-
-        // Position the camera
-        camera.position.z = 5;
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            renderer.render(scene, camera);
-        }
-        animate();
-    </script>
+  <h1>Alfie Ukudeev-Freeman</h1>
+  <nav>
+    <a href="work.html" class="btn">Work</a>
+    <a href="about.html" class="btn">About</a>
+    <a href="personal.html" class="btn">Personal</a>
+  </nav>
 </body>
 </html>
